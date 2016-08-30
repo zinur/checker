@@ -1,1 +1,1 @@
-web:    java -jar target/checker.jar/com/heroku/undertow/HelloWorldServer.class
+web:    java -jar target/checker.jar
