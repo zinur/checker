@@ -1,23 +1,18 @@
 package com.heroku.undertow;
 
-import java.util.Optional;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import io.undertow.Undertow;
-import io.undertow.util.Headers;
-
+@Controller
+@RequestMapping("/")
 public class HelloWorldServer {
 
-    public static void main(final String[] args) {
+    @RequestMapping(method = RequestMethod.GET)
+    public String home(ModelMap model) {
 
-        Optional<String> property = Optional.ofNullable(System.getProperty("server.port"));
-
-        Undertow server = Undertow.builder()
-                .addHttpListener(property.isPresent() ? Integer.valueOf(property.get()) : 8080, "localhost")
-                .setHandler(exchange -> {
-                    exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
-                    exchange.getResponseSender().send("Hello World and heroku");
-                }).build();
-        server.start();
+        return "home";
     }
 
 }
