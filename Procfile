@@ -1,1 +1,1 @@
-web: java -jar target/checker.jar
+web:  java -jar target/checker.jar
